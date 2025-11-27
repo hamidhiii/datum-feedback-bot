@@ -1,17 +1,15 @@
 const { Pool } = require('pg');
 const config = require('../config/env');
 
+// Render требует подключение через DATABASE_URL + SSL
 const pool = new Pool({
-  host: config.DB_HOST,
-  port: config.DB_PORT,
-  database: config.DB_NAME,
-  user: config.DB_USER,
-  password: config.DB_PASSWORD,
-  max: 20,
-  idleTimeoutMillis: 30000,
-  connectionTimeoutMillis: 2000,
+  connectionString: config.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false,
+  },
 });
 
+// Лог ошибок
 pool.on('error', (err) => {
   console.error('Unexpected error on idle client', err);
   process.exit(-1);
@@ -27,4 +25,3 @@ pool.query('SELECT NOW()', (err, res) => {
 });
 
 module.exports = pool;
-
