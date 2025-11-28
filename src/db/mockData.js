@@ -32,7 +32,7 @@ const products = {
       description: 'Насыщенный древесно-пряный аромат. Стойкость: 10+ часов.',
       price: 180000,
       volume: '50ml',
-      concentration: 'Intense',
+      concentration: 'Intense', 
       image: 'https://example.com/ravshan-intense.jpg',
       instructions: 'Экономичный расход. Достаточно 2-3 спрея.',
       season: 'autumn-winter',
